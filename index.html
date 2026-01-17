@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmar Alwataniya | Construction & Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #e67e22;
+            --secondary-color: #2c3e50;
+            --accent-color: #34495e;
+            --light-color: #ecf0f1;
+            --dark-color: #1a252f;
+            --text-color: #333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--secondary-color);
+            padding: 1.2rem 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--light-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+            border: 2px solid var(--primary-color);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5);
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 6rem 5%;
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--secondary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        /* What We Do Section */
+        #what-we-do {
+            background-color: white;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 220px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            color: var(--secondary-color);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Who We Are Section */
+        #who-we-are {
+            background-color: #f1f8ff;
+        }
+
+        .company-info {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .company-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .company-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .achievement {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .achievement i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .achievement h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 4rem 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .hero {
+                margin-top: 120px;
+                height: 80vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .achievements {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-hard-hat"></i> Emmar <span>Alwataniya</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#what-we-do">What We Do</a></li>
+            <li><a href="#who-we-are">Who We Are</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Building Egypt's Future</h1>
+            <p>EMMAR ALWATANIYA delivers large-scale, strategically important projects across Egypt, spanning diverse sectors with excellence and innovation.</p>
+            <a href="#what-we-do" class="cta-button">Our Projects</a>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section id="what-we-do" class="section">
+        <div class="section-header">
+            <h2>What We Do</h2>
+        </div>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Infrastructure Projects">
+                </div>
+                <div class="service-content">
+                    <h3>Infrastructure Development</h3>
+                    <p>Building Egypt's critical infrastructure including roads, bridges, and utilities to support economic growth and connectivity across the nation.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Commercial Construction">
+                </div>
+                <div class="service-content">
+                    <h3>Commercial Construction</h3>
+                    <p>Designing and constructing commercial complexes, office buildings, and retail centers that drive business and commerce in Egypt.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="Residential Projects">
+                </div>
+                <div class="service-content">
+                    <h3>Residential Communities</h3>
+                    <p>Creating modern, sustainable residential communities that provide quality living spaces for Egyptian families across the country.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-body" style="margin-top: 3rem; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <p style="font-size: 1.2rem; text-align: center; color: #555; line-height: 1.8;">
+                <strong>EMMAR ALWATANIYA</strong> has delivered numerous large-scale, strategically important projects in Egypt, spanning a diverse range of sectors including infrastructure, commercial development, residential communities, and industrial facilities.
+            </p>
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section id="who-we-are" class="section">
+        <div class="section-header">
+            <h2>Who We Are</h2>
+        </div>
+        <div class="company-info">
+            <div class="company-content">
+                <div class="company-text">
+                    <p>
+                        <strong>EMMAR ALWATANIYA</strong> is one of the largest corporations in Egypt. We offer premium services and solutions across engineering and construction, we're known for our diverse and extensive list of operations.
+                    </p>
+                    <p>
+                        Founded in 2025, our Group is now a fully integrated, we're known as a leading global engineering and investment group with a reputation for excellence, reliability and innovation. As a result, we are regularly contracted to execute especially large, challenging or niche projects IN EGYPT.
+                    </p>
+                    
+                    <div class="achievements">
+                        <div class="achievement">
+                            <i class="fas fa-city"></i>
+                            <h4>100+ Projects</h4>
+                            <p>Completed across Egypt</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-users"></i>
+                            <h4>Expert Team</h4>
+                            <p>Skilled professionals</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h4>Since 2025</h4>
+                            <p>Building Egypt's future</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-award"></i>
+                            <h4>Award Winning</h4>
+                            <p>Excellence in construction</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="company-img">
+                    <img src="https://iili.io/fUREvig.png" alt="Construction Site" style="width: 100%; border-radius: 10px; box-shadow: var(--shadow);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mobarkeldeb777@gmail.com</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone Numbers</h4>
+                            <p>01004886886</p>
+                            <p>01222772612</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Headquarters</h4>
+                            <p>Cairo, Egypt</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="contact-info">
+                    <li><a href="#what-we-do" style="color: #ddd; text-decoration: none;">What We Do</a></li>
+                    <li><a href="#who-we-are" style="color: #ddd; text-decoration: none;">Who We Are</a></li>
+                    <li><a href="#contact" style="color: #ddd; text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Our Commitment</h3>
+                <p style="color: #bbb; line-height: 1.7;">
+                    At EMMAR ALWATANIYA, we are committed to building Egypt's future with integrity, innovation, and excellence. We pride ourselves on delivering projects that stand the test of time.
+                </p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 EMMAR ALWATANIYA. All Rights Reserved. | Building Egypt's Future Since 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+            } else {
+                navbar.style.backgroundColor = 'var(--secondary-color)';
+            }
+        });
+    </script>
+</body>
+</html>
